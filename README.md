@@ -1,0 +1,1 @@
+This is a repository to store multiple projects for my bootcamp experience at Coding Dojo.
