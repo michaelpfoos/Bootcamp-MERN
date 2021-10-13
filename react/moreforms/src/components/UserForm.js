@@ -9,6 +9,7 @@ const UserForm = (props) => {
     const [confirmPasswordValidation, setConfirmPasswordValidation] = useState("");
 
     //validate first name
+    /*
     const validateFirstName = (e) => {
         if (e.target.value.length === 0) {
             setFirstNameValidation("");
@@ -20,6 +21,7 @@ const UserForm = (props) => {
             setFirstNameValidation("");
         }
     }
+    */
 
     //validate last name
     const validateLastName = (e) => {
@@ -83,12 +85,12 @@ const UserForm = (props) => {
             <form className="form">
                 <div className="inputContainer">
                     <label>First Name: </label>
-                    <input type="text" onChange={ validateFirstName } />                                    
+                    <input type="text" onChange={ (e) => setFirstNameValidation(e.target.value) } />                                    
                 </div>
                 {
-                        firstNameValidation ?
-                        <p>{ firstNameValidation }</p> :
-                        ''
+                        firstNameValidation.length > 0 && firstNameValidation.length < 3 ?
+                        <p>Field must be at least 2 characters</p> :
+                        null
                 }  
                 <div className="inputContainer">
                     <label>Last Name: </label>
