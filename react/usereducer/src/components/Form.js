@@ -45,45 +45,41 @@ const Form = () => {
     //This populates the action which we can then pass to formValidator
     const name = (e) => {
         const { name, value } = e.target; //This destructure will get the value and the id from the html element     
-        
-        console.log('debug name function');
-        console.log(e.target)
-        console.log('name: ' + name);
-        console.log('value: ' + value);
+
+        //If I dont' initialize this the code bombs.
+        let error = '';
         
         //we can determine the error here.
         switch (name) {
             case 'firstName':
                 if ( value.length === 0 || value.length > 2) {
                     console.log('case one');
-                    const error = '';
+                    error = '';
                 }
                 else {
                     console.log('case two');
                     console.log('length: ' + value.length);
-                    const error = 'Name must be at least 2 characters in length';
+                    error = 'Name must be at least 2 characters in length';
                 }  
                 break;
             case 'lastName':
-                if ( value.length === 0 && value.length > 2) {
-                    const error = '';
+                if ( value.length === 0 || value.length > 2) {
+                    error = '';
                 }
                 else {
-                    const error = 'Name must be at least 2 characters in length';
+                    error = 'Name must be at least 2 characters in length';
                 }   
                 break;
             case 'email':
-                if ( value.length === 0 && value.length > 8) {
-                    const error = '';
+                if ( value.length === 0 || value.length > 8) {
+                    error = '';
                 }
                 else {
-                    const error = 'Name must be at least 8 characters in length';
+                    error = 'Name must be at least 8 characters in length';
                 }    
                 break;
-            default: const error = 'Something went wrong'; 
-        }
-
-        const error = 'Something went wrong'; 
+            default: error = 'Something went wrong'; 
+        }        
        
         
         //4. dispatch will return the object to the validator function.  
