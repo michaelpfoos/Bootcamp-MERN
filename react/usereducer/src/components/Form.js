@@ -40,7 +40,7 @@ const formValidator = ( state, action ) => {
     //4. return the value
     return {
         ...state, //spread operator to copy the existing state in it's entirety.
-        [action.type]: action.payload //set the desired value to what you want it to be.  
+        [action.type]: action.payload //set the desired value to what you want it to be.  return
         //In this case action.type == firstname, lastname, or email
         //In this case action.payload == the attributes of that object.  value, and error.  
     }  
@@ -69,10 +69,10 @@ const Form = () => {
     //declare state and dispatch using the use reducer
     //state is set to initialState
     //dispatch will be sent to the formValidator function as the action
-    const [state, dispatch] = useReducer(formValidator, initialState);   
+    const [state, dispatch] = useReducer(formValidator, initialState);   //usually called reducer
 
     //This populates the action which we can then pass to formValidator
-    const name = (e) => {
+    const name = (e) => { //call this change handler or onchangehandler
         const { name, value } = e.target; //This destructure will get the value and the id from the html element     
         const error = state[name].error;
 
