@@ -2,38 +2,50 @@ import React, { useState } from 'react';
 
 const Todolist = (props) => {   
 
-    //This state will maintain the list
-    const [list, modifyList] = useState({        
-        toDo: JSON.parse(sessionStorage.getItem('toDoList')) ? JSON.parse(sessionStorage.getItem('toDoList')) : ['Complete the To Do list assignment before the deadline tonight', 'Eat some ice cream', 'Get eight hours of sleep'] 
-    });    
+    // //This state will maintain the list
+    // const [list, modifyList] = useState({        
+    //     //toDo: JSON.parse(sessionStorage.getItem('toDoList')) ? JSON.parse(sessionStorage.getItem('toDoList')) : ['Complete the To Do list assignment before the deadline tonight', 'Eat some ice cream', 'Get eight hours of sleep'] 
+    //     //toDo: localStorage.getItem('toDoList') ? localStorage.getItem('toDoList') : ['Complete the To Do list assignment before the deadline tonight', 'Eat some ice cream', 'Get eight hours of sleep'] 
+    //     //toDo: JSON.parse(localStorage.getItem('toDoList')) ? JSON.parse(localStorage.getItem('toDoList')) : ['Complete the To Do list assignment before the deadline tonight', 'Eat some ice cream', 'Get eight hours of sleep'] 
+    // }); 
+
+    //empty state example
+    const [list, setList] = useState([]);
 
     //This state will be used to retreive a value from a form.  
     const [newToDo, getNewToDo] = useState("");
 
     //Submit an addition to the list
-    const addToList = () => {
+    const addToList = (e) => {        
+        e.preventDefault();
+
+        setList([...list, {
+            toDo: newToDo,
+            isComplete: false,
+            id: Math.floor(Math.random() * 1000)
+        }]);
         
-        const currentList = list.toDo;
-        currentList.push(newToDo); 
+        //const currentList = list.toDo;
+        //currentList.push(newToDo); 
         //const storeList = newToDoList;          
 
         //save data to sessionStorage
-        sessionStorage.setItem('toDoList', JSON.stringify(currentList));         
+        //sessionStorage.setItem('toDoList', JSON.stringify(currentList)); 
+        //localStorage.setItem('toDoList', JSON.stringify(currentList)); 
+        //localStorage.setItem("toDoList", Todolist);        
        
     } 
 
     //Delete an item from the array in state using filter.
     //https://stackoverflow.com/questions/55140474/filter-array-of-objects-by-index
-    const deleteFromList = (e) => {
-        const isToRemove = parseInt(e.target.id);  
+    const deleteFromList = (itemToDelete) => {
+        //const isToRemove = parseInt(e.target.id);  
         
         //use filter to return a new array excluding the value that we want to delete
-        const newToDoList = list.toDo.filter((_, index) => index !== isToRemove);       
+        const newToDoList = list.filter((toDo, index) => toDo.id !== itemToDelete);       
 
         //set state to the new array use modifyList
-        modifyList({
-            toDo: newToDoList            
-        });               
+        setList(newToDoList);               
     }
 
     //This is a function that will be called up to "complete" an item on the todo list.
@@ -57,13 +69,13 @@ const Todolist = (props) => {
                 <button type="submit" className="btn btn-primary mt-2">Submit</button>
             </form>                     
             {
-                list.toDo.map( (item, index) => 
+                list.map( (todo, index) => 
                     <div className="d-flex justify-content-between align-items-center mt-3 border border-3 border-primary p-3" id={ 'todo-' + index }>
                         <div>
-                            <p className="fs-2 d-inline" id={'p-' + index}>{ item }</p>
+                            <p className="fs-2 d-inline" id={'p-' + index}>{ todo.toDo }</p>
                             <input class="fs-2 form-check-input ms-3 mt-2" type="checkbox" id={'checkbox-' + index} onClick={completeTask}/>
                         </div>
-                        <button type="button" class="btn btn-secondary" id={index} onClick={deleteFromList}>Delete</button>                
+                        <button type="button" class="btn btn-secondary" id={index} onClick={ (e) => deleteFromList(todo.id) }>Delete</button>                
                     </div>  
                 )                   
             }                                             

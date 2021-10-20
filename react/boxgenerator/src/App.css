@@ -1,0 +1,46 @@
+#main {
+  max-width: 1200px;
+  margin: auto;
+}
+
+#form {  
+  margin: auto;
+  margin-top: 5em;  
+}
+
+#select {
+  max-width: 300px;
+}
+
+#box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 2em;
+}
+
+.box {
+  margin-top: 2em;  
+  height: 100px;
+  width: 100px;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;  
+}
+
+.purple {
+  background-color: purple;
+}
+
+.green {
+  background-color: green;
+}
