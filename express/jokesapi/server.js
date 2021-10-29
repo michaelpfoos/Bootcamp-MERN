@@ -6,6 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
 require("./config/mongoose.config");
+const jokeRoutes = require("./routes/jokes.routes")(app);
 
 const portNumber = 8000;
 
