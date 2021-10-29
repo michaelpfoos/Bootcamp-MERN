@@ -5,8 +5,7 @@ module.exports = {
     //Get all jokes
     findAllJokes: (req, res)=>{
         Jokes.find({})
-            .then((allJokes)=>{
-                console.log(allJokes);
+            .then((allJokes)=>{                
                 res.json({allJokes: allJokes});
             })
     },
@@ -14,8 +13,7 @@ module.exports = {
     //create new joke
     createNewJoke: (req, res)=> {
         Jokes.create(req.body)
-            .then((newJoke)=>{
-                console.log(newJoke);
+            .then((newJoke)=>{                
                 res.json(newJoke);
             })
             .catch((err)=>console.log(err))
@@ -24,8 +22,7 @@ module.exports = {
     //get a single joke
     findOneJoke: (req, res)=> {
         Jokes.findOne({_id: req.params.id})
-            .then((oneJoke)=>{
-                console.log(oneJoke);
+            .then((oneJoke)=>{               
                 res.json(OneJoke);
             })
             .catch((err)=>console.log(err))
@@ -45,8 +42,7 @@ module.exports = {
     //delete a single joke
     deleteJoke: (req, res)=>{
         Jokes.deleteOne({_id: req.params.id})
-        .then((deletedJoke)=>{
-            console.log(deletedJoke);
+        .then((deletedJoke)=>{           
             res.json(deletedJoke);
         })
     }
