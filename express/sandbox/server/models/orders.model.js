@@ -10,7 +10,9 @@ const mongoose = require('mongoose');
 const OrderSchema = new mongoose.Schema({
 
     customerName: {
-        type: String
+        type: String,
+        required:[true, "Customer needs a name bro"],
+        minLength:[3, "Your name is too short, make it longer!"]
     },
     customerEmail: {
         type: String

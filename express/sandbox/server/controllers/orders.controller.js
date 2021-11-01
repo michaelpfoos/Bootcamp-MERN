@@ -12,7 +12,10 @@ module.exports = {
                 console.log(allOrders);
                 res.json({allOrders: allOrders });
             })
-            .catch((err)=>console.log(err))
+            .catch((err)=> {
+                console.log(err);
+                res.json({message: "Something went wrong in findAllOders", error: err}) //from last lecture.  
+            })
     },
     
     findOneOrder: (req, res)=>{
@@ -31,7 +34,10 @@ module.exports = {
                 console.log(newOrder);
                 res.json(newOrder);
             })
-            .catch((err)=>console.log(err))
+            .catch((err)=> {
+                console.log(err)
+                res.status(400).json(err); //This will take the error from the requirements in the model.  This may not be happening in this example but it can be tested.
+            })
     },
 
     deleteOrder: (req, res)=>{
