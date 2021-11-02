@@ -1,10 +1,16 @@
 import './App.css';
-import ProductManager from './components/ProductManager';
+import { Router } from '@reach/router';
+import Main from './views/main';
+import ProductDetails from './components/ProductDetails';
+
 
 function App() {
   return (
     <div className="App">
-      <ProductManager />
+    <Router>
+      <Main path="/" /> 
+      <ProductDetails path="/:_id" />           
+    </Router>
     </div>
   );
 }

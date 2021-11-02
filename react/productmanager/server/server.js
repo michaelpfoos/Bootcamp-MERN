@@ -17,7 +17,7 @@ require("./config/mongoose.config");
 //use this so you can make calls from anywhere.  If I use the code above
 //I can only work on this from my main pc.  What if I want to access the server form somewhere else on my
 //local network?
-app.use(cors()) 
+app.use(cors()); 
 
 //Add routes
 require("./routes/productmanager.routes")(app);
