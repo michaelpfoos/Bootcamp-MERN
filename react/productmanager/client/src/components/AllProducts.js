@@ -18,7 +18,7 @@ const AllProducts = (props) => {
             <h1 className="text-center mt-3 fs-1 mb-3">All Products: </h1>  
             {products.map((product, index)=>{
                 return (
-                    <div className="d-flex justify-content-between mx-auto custom_flex mb-3">
+                    <div key={index} className="d-flex justify-content-between mx-auto custom_flex mb-3">
                         <Link className="text-center d-block" to={`/${product._id}`}>{product.title}</Link>
                         <div>
                             <input type="button" value="Delete" className="btn btn-secondary me-1" onClick={deleteProduct.bind(this, product._id)} />                           
