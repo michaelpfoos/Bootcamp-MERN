@@ -4,7 +4,7 @@ import { Link } from '@reach/router';
 
 const AllProducts = (props) => {
     const [products, setProducts] = useState([]);
-    const { productFormSubmitted } = props;
+    const { productFormSubmitted, deleteProduct} = props;
 
     useEffect(()=>{
         axios.get('http://linuxhome:8000/api/productmanagers/')
@@ -15,9 +15,18 @@ const AllProducts = (props) => {
 
     return(
         <div className="border-top border-dark border-1 mt-4">
-            <h1 className="text-center mt-3 fs-1">All Products: </h1>  
+            <h1 className="text-center mt-3 fs-1 mb-3">All Products: </h1>  
             {products.map((product, index)=>{
-                return <Link className="text-center d-block" to={`/${product._id}`}>{product.title}</Link>
+                return (
+                    <div className="d-flex justify-content-between mx-auto custom_flex mb-3">
+                        <Link className="text-center d-block" to={`/${product._id}`}>{product.title}</Link>
+                        <div>
+                            <input type="button" value="Delete" className="btn btn-secondary me-1" onClick={deleteProduct.bind(this, product._id)} />                           
+                            <Link className="btn btn-secondary custom_button" to={`/${product._id}/edit`}>Edit</Link>                          
+                        </div>
+                                                
+                    </div>
+                )                 
             })}          
         </div>
 

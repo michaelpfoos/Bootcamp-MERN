@@ -25,7 +25,7 @@ const ProductManager = (props) => {
         .then((res)=> {
             console.log(res);
             console.log(res.data);
-            setProductFormSubmitted(!productFormSubmitted); //Set the submitted flag to true
+            setProductFormSubmitted(!productFormSubmitted); //Set the submitted flag to true in main.
         })
         .catch((err)=> console.log(err));    
 

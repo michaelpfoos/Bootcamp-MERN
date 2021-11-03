@@ -27,6 +27,25 @@ module.exports = {
             res.json(oneProduct);
         })
         .catch((err)=>console.log(err))
+    },
+
+    updateProduct: (req, res)=> {
+        ProductManager.findOneAndUpdate(
+            {_id: req.params.id},
+            req.body,
+            {new: true, runValidators: true}
+        )
+        .then((updateProduct)=>res.json(updateProduct))
+        .catch((err)=>console.log(err))
+    },
+
+    deleteProduct: (req, res)=> {
+        ProductManager.deleteOne({_id: req.params.id})
+        .then((deletedProduct)=>{
+            console.log(deletedProduct);
+            res.json(deletedProduct);
+        })
+        .catch((err)=>console.log(err))
     }
     
 
