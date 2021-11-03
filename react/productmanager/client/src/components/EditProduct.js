@@ -9,8 +9,9 @@ const EditProduct = (props) => {
      const [price, setPrice] = useState(0);
      const [description, setDescription] = useState('');
 
-     useEffect(()=>{
-        const url = `http://linuxhome:8000/api/productmanagers/${_id}`;
+     const url = `http://linuxhome:8000/api/productmanagers/${_id}`;
+
+     useEffect(()=>{        
 
         axios.get(url)
         .then(res=>{               
@@ -22,9 +23,7 @@ const EditProduct = (props) => {
 
      const postData = (e) => { 
          //Prevent default behavior so it doesn't clear state
-         e.preventDefault();    
-
-        const url = `http://linuxhome:8000/api/productmanagers/${_id}`;      
+         e.preventDefault();            
         
         const data = {
             title,
@@ -34,13 +33,14 @@ const EditProduct = (props) => {
 
         axios.put(url, data)
         .then((res)=> {
-            console.log(res);
-            console.log(res.data);            
+            //console.log(res);
+            //console.log(res.data);  
+            //time to head back
+            navigate(`/`);          
         })
         .catch((err)=> console.log(err));        
 
-        //time to head back
-        navigate(`/`);
+       
           
      }
     
