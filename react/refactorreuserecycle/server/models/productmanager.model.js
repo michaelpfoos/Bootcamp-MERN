@@ -8,7 +8,8 @@ const ProductManagerSchema = new mongoose.Schema({
 
     },
     price: {
-        type: Number
+        type: Number,   
+        required: [true, "Please enter a price."]     
     },
     description: {
         type: String
