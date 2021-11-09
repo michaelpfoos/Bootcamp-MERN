@@ -1,0 +1,29 @@
+.buttonEdit {    
+    width: 225px; 
+    padding-top: .2em;
+    padding-bottom: .2em;    
+    height: 75%;
+    background: linear-gradient(#868686, #ebf7bf);
+    color: white;     
+}
+
+.buttonDelete {    
+    width: 225px; 
+    padding-top: .2em;
+    padding-bottom: .2em;    
+    height: 75%;
+    background: linear-gradient(#686868, rgb(241, 144, 245));   
+    color: white;    
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    height: 100%;
+}
+
+.alternateBackground {
+    background-color: #868686;
+}

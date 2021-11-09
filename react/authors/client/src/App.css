@@ -1,0 +1,23 @@
+.App {    
+    width: 800px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.fake-link {
+    text-decoration: underline;
+    color: blue;  
+    cursor: pointer;  
+}
+
+.cx-height-2 {
+    height: 2em;
+}
+
+.cx-height-3 {
+    height: 3em;
+}
+
+.alternateBackground {
+    background-color: rgb(196, 194, 194);
+}
