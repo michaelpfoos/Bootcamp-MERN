@@ -91,7 +91,7 @@ const AuthorDetails = (props) => {
                 <label className="form-label">Genre: </label>
                 <input type="text" value={genre} onChange={ (e)=> setGenre(e.target.value) } className="form-control" />               
                 <button className="btn btn-primary mt-3 me-3" type="submit">Submit</button>
-                <button className="btn btn-primary mt-3" type="button">Cancel</button>
+                <button className="btn btn-primary mt-3" type="button" onClick={ (e) => navigate("/") }>Cancel</button>
             </form>
         </div>
     );
