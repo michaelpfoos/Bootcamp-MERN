@@ -7,10 +7,10 @@ const AuthorDetails = (props) => {
     const { _id } = props;
     const [authorName, setAuthorName] = useState('');
     const [genre, setGenre] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState({});
     const [formStyle, setFormStyle] = useState({ display: 'block' }); 
     const [formDisabled, setFormDisabled] = useState(false);
-    //const [validateID, setValidateID] = useState('');    
+       
 
     useEffect(()=>{
 
@@ -49,12 +49,12 @@ const AuthorDetails = (props) => {
             .catch((err)=> {
                 // setError(err.response.data.errors.name.message); //this code works but you have ot know the name of the key, in this case it's name.                 
                 const errorResponse = err.response.data.errors; // Get the errors from err.response.data                    
-                const errorArr = []; // Define a temp error array to push the messages in
-                for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
-                    errorArr.push(errorResponse[key].message)                   
-                }
+                // const errorArr = []; // Define a temp error array to push the messages in
+                // for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
+                //     errorArr.push(errorResponse[key].message)                   
+                // }
                 // Set Errors
-                setError(errorArr);      
+                setError(errorResponse);                 
             });             
         } 
 
@@ -73,7 +73,10 @@ const AuthorDetails = (props) => {
                     errorArr.push(errorResponse[key].message)                   
                 }
                 // Set Errors
-                setError(errorArr);                       
+                setError(errorResponse);      
+                console.log(errorResponse.name);
+                //console.log(err);   
+                console.log(errorResponse.genre);                 
             });            
         }
     }
@@ -87,9 +90,10 @@ const AuthorDetails = (props) => {
             <form onSubmit={postData} style={formStyle} className="mt-3 border border-secondary border-1 p-3">
                 <label className="form-label">Name: </label>
                 <input type="text" value={authorName} onChange={ (e)=> setAuthorName(e.target.value) } className="form-control" />
-                <p className="text-danger">{error}</p>
+                {error.name?  <p className="text-danger">{error.name.message}</p> : null }
                 <label className="form-label">Genre: </label>
-                <input type="text" value={genre} onChange={ (e)=> setGenre(e.target.value) } className="form-control" />               
+                <input type="text" value={genre} onChange={ (e)=> setGenre(e.target.value) } className="form-control" />    
+                {error.genre?  <p className="text-danger">{error.genre.message}</p> : null }                     
                 <button className="btn btn-primary mt-3 me-3" type="submit">Submit</button>
                 <button className="btn btn-primary mt-3" type="button" onClick={ (e) => navigate("/") }>Cancel</button>
             </form>
