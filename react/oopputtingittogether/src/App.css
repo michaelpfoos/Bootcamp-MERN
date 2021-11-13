@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.facecard {
+  margin-left: 35%;
+  margin-top: 2em;
+}
+
+.facecard > h1 {
+  margin-bottom: .25em;
+}
+
+.facecard > p {
+  margin-bottom: .25em;
+  font-size: 1.5em;
+}
+
+.facecard > button {
+  padding: .25em .95em;    
+}
