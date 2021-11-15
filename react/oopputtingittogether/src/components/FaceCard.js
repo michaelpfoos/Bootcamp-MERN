@@ -7,15 +7,19 @@ class FaceCard extends Component {
             this.state = {
                 showAge: this.props.age
             };           
-    }    
+    }     
 
     render() {
+
+        //we can deconstruct inside the render for classed based components.
+        const {lastName, firstName} = this.props;
+
         return (
             <div className="facecard">
-                <h1>{this.props.lastName}, {this.props.firstName}</h1>
+                <h1>{lastName}, {firstName}</h1>
                 <p>Age: {this.state.showAge}</p>
                 <p>hair Color: {this.props.hairColor}</p>
-            <button onClick={ () => { this.setState({ showAge: this.state.showAge += 1 }) }}> Birthday Button for {this.props.firstName} {this.props.lastName}</button>
+            <button onClick={ () => { this.setState({ showAge: this.state.showAge += 1 }) }}> Birthday Button for {firstName} {lastName}</button>
         </div>
         );
     }
