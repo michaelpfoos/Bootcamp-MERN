@@ -3,13 +3,16 @@ import Nav from '../components/Nav';
 import AddFamily from '../components/AddFamily';
 
 
-const AddFamilyView = () => {
+const EditFamilyView = (props) => {
+
+    const { id } = props;
+
     return (
         <div>
             <Nav />
-            <AddFamily scope={"add"} />            
+            <AddFamily scope={"edit"} id={id} />            
         </div>
     );
 }
 
-export default AddFamilyView;
+export default EditFamilyView;

@@ -80,6 +80,10 @@
   margin-top: .25me;
 }
 
+.editButton {
+  margin-left: .25em; 
+}
+
 .error {
   color: red;
   margin-left: 5em;

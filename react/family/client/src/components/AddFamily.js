@@ -1,29 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { navigate } from '@reach/router';
 import axios from 'axios';
 
-const AddFamily = () => {
+const AddFamily = (props) => {
+
+    const { scope, id } = props;
 
     const [newFamilyMemberName, setNewFamilyMemberName] = useState('');
     const [newFamilyMemberAge, setNewFamilyMemberAge] = useState('');
     const [errors, setErrors] = useState({});
 
+    useEffect(()=>{
+        if ( scope === 'edit') {
+            const url = `http://linuxhome:8000/api/family/${id}`
+
+            axios.get(url)
+            .then((res)=>{
+                setNewFamilyMemberName(res.data[0].name);
+                setNewFamilyMemberAge(res.data[0].age);                
+            })
+            .catch((err)=>{
+                console.log(err);
+            });
+
+        }
+    },[])
+
     const submitFamily = (e) => {
+
         e.preventDefault();
 
-        const url = 'http://linuxhome:8000/api/family/new/';
         const data = {
             name: newFamilyMemberName,
             age: newFamilyMemberAge
         };
 
-        axios.post(url, data)
-        .then((res)=>{
-            navigate('/'); //If the post succeeds go home page.
-        })
-        .catch((err)=>{
-            setErrors(err.response.data.errors);  
-        });
+        if ( scope === 'add') {            
+    
+            const url = 'http://linuxhome:8000/api/family/new/';            
+    
+            axios.post(url, data)
+            .then((res)=>{
+                navigate('/'); //If the post succeeds go home page.
+            })
+            .catch((err)=>{
+                setErrors(err.response.data.errors);  
+            });
+        }
+
+        //For editing a family member.
+        else {
+            const url = `http://linuxhome:8000/api/family/${id}`;
+
+            //For updating use put.
+            axios.put(url, data)
+            .then((res)=>{
+                navigate('/'); //If the post succeeds go home page.
+            })
+            .catch((err)=>{
+                setErrors(err.response.data.errors);                 
+            });
+        }
+
 
     }
     
