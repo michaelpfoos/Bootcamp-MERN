@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  height: 3em;
+  width: 100%;
+  background-color: rgb(99, 99, 99);
+  margin-bottom: 2em;
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+
+.addNav {
+  color: white;
+  text-decoration: none;
+  margin-top: .25em;
+  font-size: 1.25em;
+  border: 1px solid white;
+  padding: .25em;
+}
+
+.addNav:hover {
+  background-color: rgb(73, 70, 70);
+}
+
+.addNav:active {
+  background-color: rgb(22, 22, 22);
+}
+
+.header {
+  font-size: 1.5em;
+  text-align: center;
+  padding-top: .25em;
+  color: white;
+}
+
+.flex {
+  display: flex;  
+  width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid black;
+  
+}
+
+.name {
+  flex: 2;
+  height: 2em;  
+  padding-left: 1em;
+}
+
+.age {
+  flex: 1;
+  height: 2em;
+  padding-left: 1em;
+  border-left: 1px solid black;
+}
+
+.addFamilyForm {
+  margin-left: 5em;
+}
+
+.formName {
+  width: 4em;
+  display: inline-block;
+  text-align: right;
+}
+
+.formAge {
+  width: 4em;
+  display: inline-block;
+  text-align: right;
+}
+
+.addButtton {
+  margin-left: 5em;
+  margin-top: .25me;
+}
+
+.error {
+  color: red;
+  margin-left: 5em;
+}
+
+.paragraphName {
+  display: inline;
+  margin-right: 1em;
+}

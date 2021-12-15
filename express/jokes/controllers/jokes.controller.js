@@ -23,7 +23,7 @@ module.exports = {
     findOneJoke: (req, res)=> {
         Jokes.findOne({_id: req.params.id})
             .then((oneJoke)=>{               
-                res.json(OneJoke);
+                res.json(oneJoke);
             })
             .catch((err)=>console.log(err))
     },
