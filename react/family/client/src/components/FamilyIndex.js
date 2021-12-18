@@ -39,6 +39,7 @@ const FamilyIndex = () => {
                         <p className="paragraphName">{value.name}</p>
                         <DeleteButton id={value._id} refresh={refresh} setRefresh={setRefresh} />
                         <Link className="editButton" to={"/edit/" + value._id}>Edit</Link>
+                        <Link className="editButton" to={"/" + value._id}>Details</Link>
                     </div> 
                     <div className="age">
                         <p>{value.age}</p>
